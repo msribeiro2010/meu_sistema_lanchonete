@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Ingredientes</h2>
+
+<form method="POST" class="mb-3">
+  <div class="mb-2">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" id="nome" name="nome" class="form-control" required>
+  </div>
+  <div class="mb-2">
+    <label for="categoria" class="form-label">Categoria</label>
+    <input type="text" id="categoria" name="categoria" class="form-control">
+  </div>
+
+ 
+  <button type="submit" class="btn btn-primary">Adicionar Ingrediente</button>
+</form>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Categoria</th>
+       </tr>
+  </thead>
+  <tbody>
+    {% for f in ingredientes %}
+    <tr>
+      <td>{{ f.id }}</td>
+      <td>{{ f.nome }}</td>
+      <td>{{ f.categoria }}</td>
+     </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

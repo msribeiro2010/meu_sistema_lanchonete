@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pedidos</h2>
+
+<!-- Formulário de criação de Pedido -->
+<form method="POST" class="mb-3">
+  <div class="mb-2">
+    <label for="mesa" class="form-label">Mesa</label>
+    <input type="number" id="mesa" name="mesa" class="form-control" required>
+  </div>
+  <div class="mb-2">
+    <label for="data_hora_pedido" class="form-label">Data/Hora do Pedido</label>
+    <!-- Se quiser usar datetime-local (HTML5) -->
+    <input type="datetime-local" id="data_hora_pedido" name="data_hora_pedido" class="form-control" required>
+    <!-- Caso prefira apenas 'date' e 'time', ou manipule no back-end -->
+  </div>
+  <div class="mb-2">
+    <label for="situacao" class="form-label">Situação</label>
+    <input type="text" id="situacao" name="situacao" class="form-control" placeholder="Ex: Em Aberto, Concluído, Cancelado">
+  </div>
+  <button type="submit" class="btn btn-primary">Adicionar Pedido</button>
+</form>
+
+<!-- Tabela de pedidos -->
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Mesa</th>
+      <th>Data/Hora Pedido</th>
+      <th>Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in pedidos %}
+    <tr>
+      <td>{{ p.id }}</td>
+      <td>{{ p.mesa }}</td>
+      <td>{{ p.data_hora_pedido }}</td>
+      <td>{{ p.situacao }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

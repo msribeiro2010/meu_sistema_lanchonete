@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Clientes</h2>
+
+<form method="POST" class="mb-3">
+  <div class="mb-2">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" id="nome" name="nome" class="form-control" required>
+  </div>
+  <div class="mb-2">
+    <label for="telefone" class="form-label">Telefone</label>
+    <input type="text" id="telefone" name="telefone" class="form-control">
+  </div>
+  <div class="mb-2">
+    <label for="endereco" class="form-label">Endereço</label>
+    <input type="text" id="endereco" name="endereco" class="form-control">
+  </div>
+  <div class="mb-2">
+    <label for="data_cadastro" class="form-label">Data de Cadastro</label>
+    <input type="date" id="data_cadastro" name="data_cadastro" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Adicionar Cliente</button>
+</form>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Endereço</th>
+      <th>Data Cadastro</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in clientes %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.nome }}</td>
+      <td>{{ c.telefone }}</td>
+      <td>{{ c.endereco }}</td>
+      <td>{{ c.data_de_cadastro }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
